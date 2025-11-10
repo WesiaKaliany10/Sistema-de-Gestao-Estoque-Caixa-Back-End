@@ -1,6 +1,7 @@
 package com.senai.Josias.Wesia.Sistema.de.Gestao.de.Estoque.e.Caixa.entity;
 
 import com.senai.Josias.Wesia.Sistema.de.Gestao.de.Estoque.e.Caixa.enums.Perfil;
+import com.senai.Josias.Wesia.Sistema.de.Gestao.de.Estoque.e.Caixa.service.Criptografia;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -66,7 +67,7 @@ public class Usuario {
     }
 
     public void setSenha(String senha) {
-        this.senha = senha;
+        this.senha = Criptografia.gerarHash(senha);
     }
 
     public Perfil getPerfil() {
