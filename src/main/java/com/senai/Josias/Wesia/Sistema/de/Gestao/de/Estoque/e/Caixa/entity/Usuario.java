@@ -1,6 +1,7 @@
 package com.senai.Josias.Wesia.Sistema.de.Gestao.de.Estoque.e.Caixa.entity;
 
 import com.senai.Josias.Wesia.Sistema.de.Gestao.de.Estoque.e.Caixa.enums.Perfil;
+import com.senai.Josias.Wesia.Sistema.de.Gestao.de.Estoque.e.Caixa.enums.StatusUsuario;
 import com.senai.Josias.Wesia.Sistema.de.Gestao.de.Estoque.e.Caixa.service.Criptografia;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -35,8 +36,9 @@ public class Usuario {
     private Perfil perfil;
 
     @NotNull
-    @Column(nullable = false)
-    private boolean status;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 10)
+    private StatusUsuario status;
 
     public long getId() {
         return id;
@@ -78,11 +80,11 @@ public class Usuario {
         this.perfil = perfil;
     }
 
-    public boolean isStatus() {
+    public StatusUsuario getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(StatusUsuario status) {
         this.status = status;
     }
 }
