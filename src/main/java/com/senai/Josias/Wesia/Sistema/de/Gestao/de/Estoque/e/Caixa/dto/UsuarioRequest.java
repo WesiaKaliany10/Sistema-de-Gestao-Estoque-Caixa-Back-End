@@ -13,10 +13,8 @@ public record UsuarioRequest (
 
     @NotBlank
     @Size(min = 8, message = "A senha deve ter pelo menos 8 caracteres.")
-    String senha,
+    String senha
 
-    @NotNull
-    Perfil perfil
 
     ){
 

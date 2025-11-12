@@ -4,6 +4,7 @@ import com.senai.Josias.Wesia.Sistema.de.Gestao.de.Estoque.e.Caixa.dto.UsuarioRe
 import com.senai.Josias.Wesia.Sistema.de.Gestao.de.Estoque.e.Caixa.dto.UsuarioResponseAdmin;
 import com.senai.Josias.Wesia.Sistema.de.Gestao.de.Estoque.e.Caixa.dto.UsuarioResponseOperador;
 import com.senai.Josias.Wesia.Sistema.de.Gestao.de.Estoque.e.Caixa.entity.Usuario;
+import com.senai.Josias.Wesia.Sistema.de.Gestao.de.Estoque.e.Caixa.enums.Perfil;
 import com.senai.Josias.Wesia.Sistema.de.Gestao.de.Estoque.e.Caixa.enums.StatusUsuario;
 
 public final class UsuarioMapper {
@@ -15,7 +16,7 @@ public final class UsuarioMapper {
         usuario.setNome(dto.nome());
         usuario.setEmail(dto.email());
         usuario.setSenha(dto.senha());
-        usuario.setPerfil(dto.perfil());
+        usuario.setPerfil(Perfil.OPERADOR);
         usuario.setStatus(StatusUsuario.ATIVO);
         return usuario;
     }
@@ -24,8 +25,7 @@ public final class UsuarioMapper {
         return new UsuarioResponseOperador(
                 operador.getId(),
                 operador.getNome(),
-                operador.getEmail(),
-                operador.getPerfil()
+                operador.getEmail()
         );
     }
 
