@@ -24,11 +24,15 @@ public class UsuarioController {
         this.service = service;
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 29a9490 (Continuação do back end, movimentação de estoque, caixa e relatórios)
     @GetMapping
     public ResponseEntity<List<UsuarioResponseAdmin>> listarUsuarios(
             @RequestParam(required = false) Perfil perfil,
             @RequestParam(required = false) StatusUsuario statusUsuario) {
+<<<<<<< HEAD
             var listaUsuarios = service.listarTodosUsuarios(perfil,statusUsuario);
             return ResponseEntity.ok(listaUsuarios);
     }
@@ -40,4 +44,25 @@ public class UsuarioController {
     }
 
 
+=======
+        return ResponseEntity.ok(service.listarTodosUsuarios(perfil, statusUsuario));
+    }
+
+    @PostMapping
+    public ResponseEntity<UsuarioResponseOperador> cadastrarOperador(@Valid @RequestBody UsuarioRequest usuarioRequest) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.cadastrarOperador(usuarioRequest));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<UsuarioResponseAdmin> atualizarUsuario(@PathVariable Long id,
+                                                                 @Valid @RequestBody UsuarioRequest usuarioRequest) {
+        return ResponseEntity.ok(service.atualizarUsuario(id, usuarioRequest));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarUsuario(@PathVariable Long id) {
+        service.deletarUsuario(id);
+        return ResponseEntity.noContent().build();
+    }
+>>>>>>> 29a9490 (Continuação do back end, movimentação de estoque, caixa e relatórios)
 }
