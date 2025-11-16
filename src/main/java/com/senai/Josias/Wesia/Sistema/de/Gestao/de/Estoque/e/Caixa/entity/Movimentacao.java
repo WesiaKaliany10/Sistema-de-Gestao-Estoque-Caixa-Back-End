@@ -2,10 +2,7 @@ package com.senai.Josias.Wesia.Sistema.de.Gestao.de.Estoque.e.Caixa.entity;
 
 import com.senai.Josias.Wesia.Sistema.de.Gestao.de.Estoque.e.Caixa.enums.TipoMovimentacao;
 import jakarta.persistence.*;
-<<<<<<< HEAD
 
-=======
->>>>>>> 29a9490 (Continuação do back end, movimentação de estoque, caixa e relatórios)
 import java.time.LocalDateTime;
 
 @Table(name = "movimentacoes")
@@ -27,8 +24,7 @@ public class Movimentacao {
 
     private int quantidade;
 
-<<<<<<< HEAD
-=======
+
     public Long getId() {
         return id;
     }
@@ -68,5 +64,5 @@ public class Movimentacao {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
->>>>>>> 29a9490 (Continuação do back end, movimentação de estoque, caixa e relatórios)
+
 }
