@@ -3,10 +3,7 @@ package com.senai.Josias.Wesia.Sistema.de.Gestao.de.Estoque.e.Caixa.service;
 import com.senai.Josias.Wesia.Sistema.de.Gestao.de.Estoque.e.Caixa.dto.UsuarioRequest;
 import com.senai.Josias.Wesia.Sistema.de.Gestao.de.Estoque.e.Caixa.dto.UsuarioResponseAdmin;
 import com.senai.Josias.Wesia.Sistema.de.Gestao.de.Estoque.e.Caixa.dto.UsuarioResponseOperador;
-<<<<<<< HEAD
 
-=======
->>>>>>> 29a9490 (Continuação do back end, movimentação de estoque, caixa e relatórios)
 import com.senai.Josias.Wesia.Sistema.de.Gestao.de.Estoque.e.Caixa.entity.Usuario;
 import com.senai.Josias.Wesia.Sistema.de.Gestao.de.Estoque.e.Caixa.enums.Perfil;
 import com.senai.Josias.Wesia.Sistema.de.Gestao.de.Estoque.e.Caixa.enums.StatusUsuario;
@@ -29,7 +26,6 @@ public class UsuarioService {
         this.repository = repository;
     }
 
-<<<<<<< HEAD
 
     public List<UsuarioResponseAdmin> listarTodosUsuarios(Perfil perfil, StatusUsuario statusUsuario) {
 
@@ -38,27 +34,27 @@ public class UsuarioService {
         if(perfil != null && statusUsuario == StatusUsuario.ATIVO){
             lista = repository.findByPerfilOrderByNomeAsc(perfil);
         } else if (statusUsuario == StatusUsuario.INATIVO){
-=======
+
     public List<UsuarioResponseAdmin> listarTodosUsuarios(Perfil perfil, StatusUsuario statusUsuario) {
         List<Usuario> lista;
         if(perfil != null && statusUsuario != null) {
             lista = repository.findByPerfilOrderByNomeAsc(perfil);
         } else if (statusUsuario != null) {
->>>>>>> 29a9490 (Continuação do back end, movimentação de estoque, caixa e relatórios)
+
             lista = repository.findByStatusOrderByNomeAsc(statusUsuario);
         } else {
             lista = repository.findAllByOrderByNomeAsc();
         }
-<<<<<<< HEAD
+
         return  lista.stream().map(UsuarioMapper::toResponseAdmin).toList();
-=======
+
         return lista.stream().map(UsuarioMapper::toResponseAdmin).toList();
->>>>>>> 29a9490 (Continuação do back end, movimentação de estoque, caixa e relatórios)
+
     }
 
     @Transactional
     public UsuarioResponseOperador cadastrarOperador(UsuarioRequest usuarioRequest) {
-<<<<<<< HEAD
+
 
         validarRegras(usuarioRequest);
 
@@ -70,19 +66,19 @@ public class UsuarioService {
         var novo = UsuarioMapper.toEntity(usuarioRequest);
         var salvo = repository.save(novo);
 
-=======
+
         validarRegras(usuarioRequest);
         if(repository.existsByEmailIgnoreCase(usuarioRequest.email())) {
             throw new EmailConflictException("E-mail já cadastrado");
         }
         Usuario usuario = UsuarioMapper.toEntity(usuarioRequest);
         Usuario salvo = repository.save(usuario);
->>>>>>> 29a9490 (Continuação do back end, movimentação de estoque, caixa e relatórios)
+
         return UsuarioMapper.toResponseOperador(salvo);
     }
 
     @Transactional
-<<<<<<< HEAD
+
     public UsuarioResponseOperador atualizarOperador(Long id, UsuarioRequest usuarioRequest) {
         return UsuarioMapper.toResponseOperador(atualizar(id, usuarioRequest));
     }
@@ -142,7 +138,7 @@ public class UsuarioService {
 
     }
 
-=======
+
     public UsuarioResponseAdmin atualizarUsuario(Long id, UsuarioRequest usuarioRequest) {
         Usuario usuario = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado"));
@@ -171,5 +167,5 @@ public class UsuarioService {
             throw new BusinessException("Senha deve seguir política mínima (8 caracteres, 1 letra maiúscula e 1 número).");
         }
     }
->>>>>>> 29a9490 (Continuação do back end, movimentação de estoque, caixa e relatórios)
+
 }
