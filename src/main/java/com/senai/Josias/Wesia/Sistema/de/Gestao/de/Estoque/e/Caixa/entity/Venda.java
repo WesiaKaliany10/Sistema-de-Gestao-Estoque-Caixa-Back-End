@@ -4,10 +4,8 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.util.Date;
-<<<<<<< HEAD
-=======
+
 import java.util.List;
->>>>>>> 29a9490 (Continuação do back end, movimentação de estoque, caixa e relatórios)
 
 @Table(name = "vendas")
 @Entity
@@ -25,9 +23,7 @@ public class Venda {
 
     private Date dataVenda;
 
-<<<<<<< HEAD
 
-=======
     @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL)
     private List<ItemVenda> itens;
 
@@ -78,5 +74,5 @@ public class Venda {
     public void setItens(List<ItemVenda> itens) {
         this.itens = itens;
     }
->>>>>>> 29a9490 (Continuação do back end, movimentação de estoque, caixa e relatórios)
+
 }
